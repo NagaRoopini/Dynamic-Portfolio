@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles for the slides with static image backgrounds */
+        .portfolio-slide {
+            color: #fff;
+            padding: 20px;
+            min-height: 300px;
+            box-sizing: border-box;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .portfolio-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .portfolio-slide h3, .portfolio-slide p, .portfolio-slide li {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .portfolio-slide h3 {
+            border-bottom: 2px solid #fff;
+        }
+        /* Background images for Student template */
+        .template-student #introduction-slide {
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+        }
+        .template-student #about-slide {
+            background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f');
+        }
+        .template-student #education-slide {
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+        }
+        .template-student #skills-slide {
+            background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+        }
+        .template-student #projects-slide {
+            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7');
+        }
+        .template-student #achievements-slide {
+            background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b');
+        }
+        .template-student #experience-slide {
+            background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');
+        }
+        .template-student #goals-slide {
+            background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40');
+        }
+        .template-student #contact-slide {
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1b1b18c57533');
+        }
+        .template-student #social-slide {
+            background-image: url('https://images.unsplash.com/photo-1518768971419-4d29e1f54c89');
+        }
+        /* Background images for Chef template */
+        .template-chef #introduction-slide {
+            background-image: url('https://images.unsplash.com/photo-1556911220-bff31c812dba');
+        }
+        .template-chef #about-slide {
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+        }
+        .template-chef #education-slide {
+            background-image: url('https://images.unsplash.com/photo-1547592180-2f1a1b3c3e36');
+        }
+        .template-chef #skills-slide {
+            background-image: url('https://images.unsplash.com/photo-1556909172-54557c39e847');
+        }
+        .template-chef #projects-slide {
+            background-image: url('https://images.unsplash.com/photo-1606787620819-8bdf0c44c293');
+        }
+        .template-chef #achievements-slide {
+            background-image: url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d');
+        }
+        .template-chef #experience-slide {
+            background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4f');
+        }
+        .template-chef #goals-slide {
+            background-image: url('https://images.unsplash.com/photo-1551218807-8975031c6044');
+        }
+        .template-chef #contact-slide {
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+        }
+        .template-chef #social-slide {
+            background-image: url('https://images.unsplash.com/photo-1518768971419-4d29e1f54c89');
+        }
+        /* Background images for Writer template */
+        .template-writer #introduction-slide {
+            background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a');
+        }
+        .template-writer #about-slide {
+            background-image: url('https://images.unsplash.com/photo-1516979187457-6379ee2c1e84');
+        }
+        .template-writer #education-slide {
+            background-image: url('https://images.unsplash.com/photo-1491841550275-ad7854e35ca6');
+        }
+        .template-writer #skills-slide {
+            background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');
+        }
+        .template-writer #projects-slide {
+            background-image: url('https://images.unsplash.com/photo-1517816428104-3801ad9a2bf8');
+        }
+        .template-writer #achievements-slide {
+            background-image: url('https://images.unsplash.com/photo-1588195539436-7c3c0f6f3aa7');
+        }
+        .template-writer #experience-slide {
+            background-image: url('https://images.unsplash.com/photo-1501504901894-7c8f3b33b495');
+        }
+        .template-writer #goals-slide {
+            background-image: url('https://images.unsplash.com/photo-1452860606245-11643a3d8b54');
+        }
+        .template-writer #contact-slide {
+            background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
+        }
+        .template-writer #social-slide {
+            background-image: url('https://images.unsplash.com/photo-1518768971419-4d29e1f54c89');
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">Dynamic Portfolio</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content build-portfolio-section">
+            <h1>Build Your Portfolio</h1>
+            <div class="portfolio-builder">
+                <div class="portfolio-form">
+                    <h2>Enter Your Details</h2>
+                    <form id="portfolioForm">
+                        <!-- Slide 1: Main Details -->
+                        <div class="input-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g., ESTELLE DARCY" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="title">Job Title</label>
+                            <input type="text" id="title" placeholder="e.g., PRE-SCHOOL TEACHER" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" placeholder="e.g., 123-456-7890" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="e.g., hello@reallygreatsite.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" placeholder="e.g., 123 Anywhere St., Any City, State, Country 12345" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="profile">Profile</label>
+                            <textarea id="profile" placeholder="e.g., Dedicated and enthusiastic preschool teacher..." required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="education">Education</label>
+                            <textarea id="education" placeholder="e.g., Bachelor of Education in Early Childhood Education - Salford University, Graduated: May 2015" required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="experience">Internships/Experience</label>
+                            <textarea id="experience" placeholder="e.g., PRESCHOOL TEACHER - LICERIA ACADEMY, August 2017 - Present..." required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="skills">Skills (comma-separated)</label>
+                            <input type="text" id="skills" placeholder="e.g., Classroom Management, Curriculum Development..." required>
+                        </div>
+                        <!-- Slide 1: Introduction -->
+                        <div class="input-group">
+                            <label for="introduction">Introduction</label>
+                            <textarea id="introduction" placeholder="Enter your introduction"></textarea>
+                        </div>
+                        <!-- Slide 2: About Me -->
+                        <div class="input-group">
+                            <label for="about">About Me</label>
+                            <textarea id="about" placeholder="Enter about yourself"></textarea>
+                        </div>
+                        <!-- Slide 5: Projects -->
+                        <div class="input-group">
+                            <label for="projects">Projects</label>
+                            <textarea id="projects" placeholder="Enter your projects"></textarea>
+                        </div>
+                        <!-- Slide 6: Achievements/Certifications -->
+                        <div class="input-group">
+                            <label for="achievements">Achievements/Certifications</label>
+                            <textarea id="achievements" placeholder="Enter your achievements/certifications"></textarea>
+                        </div>
+                        <!-- Slide 8: Goals -->
+                        <div class="input-group">
+                            <label for="goals">Goals</label>
+                            <textarea id="goals" placeholder="Enter your goals"></textarea>
+                        </div>
+                        <!-- Slide 9: Contact -->
+                        <div class="input-group">
+                            <label for="contact">Contact</label>
+                            <textarea id="contact" placeholder="Enter your contact details"></textarea>
+                        </div>
+                        <!-- Slide 10: Social -->
+                        <div class="input-group">
+                            <label for="social">Social</label>
+                            <textarea id="social" placeholder="Enter your social media links"></textarea>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="get-started-btn" id="savePortfolio">Save Portfolio</button>
+                            <button type="button" class="get-started-btn" id="downloadPortfolio">Download as PDF</button>
+                            <button type="button" class="get-started-btn" id="clearForm">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="portfolio-preview" id="portfolioPreview">
+                    <h2>Live Preview</h2>
+                    <!-- Static Container for Main Details -->
+                    <div class="static-container">
+                        <div class="portfolio-static">
+                            <h3>Portfolio</h3>
+                            <p id="previewName">ESTELLE DARCY</p>
+                            <p id="previewTitle">PRE-SCHOOL TEACHER</p>
+                            <div class="contact-info">
+                                <h3>CONTACT</h3>
+                                <p><span class="icon">📞</span> <span id="previewPhone">123-456-7890</span></p>
+                                <p><span class="icon">✉</span> <span id="previewEmail"><a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></span></p>
+                                <p><span class="icon">🏠</span> <span id="previewAddress">123 Anywhere St., Any City, State, Country 12345</span></p>
+                            </div>
+                            <div class="profile">
+                                <h3>PROFILE</h3>
+                                <p id="previewProfile">Dedicated and enthusiastic preschool teacher...</p>
+                            </div>
+                            <div class="education">
+                                <h3>EDUCATION</h3>
+                                <div id="previewEducation">
+                                    <p>Bachelor of Education in Early Childhood Education - Salford University</p>
+                                    <p>Graduated: May 2015</p>
+                                </div>
+                            </div>
+                            <div class="skills">
+                                <h3>SKILLS</h3>
+                                <ul id="previewSkills">
+                                    <li>Classroom Management</li>
+                                    <li>Curriculum Development</li>
+                                </ul>
+                            </div>
+                            <div class="experience">
+                                <h3>INTERNSHIPS/EXPERIENCE</h3>
+                                <div id="previewExperience">
+                                    <div class="experience-item">
+                                        <p>PRESCHOOL TEACHER - LICERIA ACADEMY</p>
+                                        <p>August 2017 - Present</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sliding Container for Other Slides -->
+                    <div class="slider-wrapper">
+                        <div id="previewContent" class="slides">
+                            <!-- Slide 1: Introduction -->
+                            <div class="portfolio-slide" id="introduction-slide">
+                                <h3>Introduction</h3>
+                                <div id="previewIntroduction"></div>
+                            </div>
+                            <!-- Slide 2: About Me -->
+                            <div class="portfolio-slide" id="about-slide">
+                                <h3>About Me</h3>
+                                <div id="previewAbout"></div>
+                            </div>
+                            <!-- Slide 3: Education -->
+                            <div class="portfolio-slide" id="education-slide">
+                                <h3>Education</h3>
+                                <div id="previewEducationPage">
+                                    <p>Bachelor of Education in Early Childhood Education - Salford University</p>
+                                    <p>Graduated: May 2015</p>
+                                </div>
+                            </div>
+                            <!-- Slide 4: Skills -->
+                            <div class="portfolio-slide" id="skills-slide">
+                                <h3>Skills</h3>
+                                <ul id="previewSkillsPage">
+                                    <li>Classroom Management</li>
+                                    <li>Curriculum Development</li>
+                                </ul>
+                            </div>
+                            <!-- Slide 5: Projects -->
+                            <div class="portfolio-slide" id="projects-slide">
+                                <h3>Projects</h3>
+                                <div id="previewProjects"></div>
+                            </div>
+                            <!-- Slide 6: Achievements/Certifications -->
+                            <div class="portfolio-slide" id="achievements-slide">
+                                <h3>Achievements/Certifications</h3>
+                                <div id="previewAchievements"></div>
+                            </div>
+                            <!-- Slide 7: Internships/Experience -->
+                            <div class="portfolio-slide" id="experience-slide">
+                                <h3>Internships/Experience</h3>
+                                <div id="previewExperiencePage">
+                                    <div class="experience-item">
+                                        <p>PRESCHOOL TEACHER - LICERIA ACADEMY</p>
+                                        <p>August 2017 - Present</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 8: Goals -->
+                            <div class="portfolio-slide" id="goals-slide">
+                                <h3>Goals</h3>
+                                <div id="previewGoals"></div>
+                            </div>
+                            <!-- Slide 9: Contact -->
+                            <div class="portfolio-slide" id="contact-slide">
+                                <h3>Contact</h3>
+                                <div id="previewContact"></div>
+                            </div>
+                            <!-- Slide 10: Social -->
+                            <div class="portfolio-slide" id="social-slide">
+                                <h3>Social</h3>
+                                <div id="previewSocial"></div>
+                            </div>
+                        </div>
+                        <button class="slide-arrow prev-arrow" id="prevSlide" aria-label="Previous Slide">‹</button>
+                        <button class="slide-arrow next-arrow" id="nextSlide" aria-label="Next Slide">›</button>
+                        <div class="slide-indicators" id="slideIndicators" role="tablist"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const { jsPDF } = window.jspdf;
+        const portfolioForm = document.getElementById('portfolioForm');
+        const previewContent = document.getElementById('previewContent');
+        const savePortfolioBtn = document.getElementById('savePortfolio');
+        const downloadPortfolioBtn = document.getElementById('downloadPortfolio');
+        const clearFormBtn = document.getElementById('clearForm');
+        const prevSlideBtn = document.getElementById('prevSlide');
+        const nextSlideBtn = document.getElementById('nextSlide');
+        const slideIndicators = document.getElementById('slideIndicators');
+        const portfolioPreview = document.getElementById('portfolioPreview');
+
+        // Get template from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const templateFromUrl = urlParams.get('template') || 'student';
+        const validTemplates = ['student', 'chef', 'professor', 'writer'];
+        const selectedTemplate = validTemplates.includes(templateFromUrl) ? templateFromUrl : 'student';
+
+        // Get form elements
+        const inputs = {
+            name: document.getElementById('name'),
+            title: document.getElementById('title'),
+            phone: document.getElementById('phone'),
+            email: document.getElementById('email'),
+            address: document.getElementById('address'),
+            profile: document.getElementById('profile'),
+            education: document.getElementById('education'),
+            experience: document.getElementById('experience'),
+            skills: document.getElementById('skills'),
+            introduction: document.getElementById('introduction'),
+            about: document.getElementById('about'),
+            projects: document.getElementById('projects'),
+            achievements: document.getElementById('achievements'),
+            goals: document.getElementById('goals'),
+            contact: document.getElementById('contact'),
+            social: document.getElementById('social')
+        };
+
+        // Get preview elements
+        const previews = {
+            name: document.getElementById('previewName'),
+            title: document.getElementById('previewTitle'),
+            phone: document.getElementById('previewPhone'),
+            email: document.getElementById('previewEmail'),
+            address: document.getElementById('previewAddress'),
+            profile: document.getElementById('previewProfile'),
+            education: document.getElementById('previewEducation'),
+            experience: document.getElementById('previewExperience'),
+            skills: document.getElementById('previewSkills'),
+            introduction: document.getElementById('previewIntroduction'),
+            about: document.getElementById('previewAbout'),
+            educationPage: document.getElementById('previewEducationPage'),
+            skillsPage: document.getElementById('previewSkillsPage'),
+            projects: document.getElementById('previewProjects'),
+            achievements: document.getElementById('previewAchievements'),
+            experiencePage: document.getElementById('previewExperiencePage'),
+            goals: document.getElementById('previewGoals'),
+            contact: document.getElementById('previewContact'),
+            social: document.getElementById('previewSocial')
+        };
+
+        const defaultValues = {
+            name: 'ESTELLE DARCY',
+            title: 'PRE-SCHOOL TEACHER',
+            phone: '123-456-7890',
+            email: 'hello@reallygreatsite.com',
+            address: '123 Anywhere St., Any City, State, Country 12345',
+            profile: 'Dedicated and enthusiastic preschool teacher with a passion for fostering a positive and inclusive learning environment.',
+            education: 'Bachelor of Education in Early Childhood Education - Salford University\nGraduated: May 2015',
+            experience: 'PRESCHOOL TEACHER - LICERIA ACADEMY\nAugust 2017 - Present\n- Develop and implement age-appropriate lesson plans.\n- Foster a positive and nurturing classroom environment.\nASSISTANT PRESCHOOL TEACHER - LICERIA ACADEMY\nMay 2014 - July 2017\n- Assisted in planning and implementing engaging lesson plans.',
+            skills: 'Classroom Management, Curriculum Development, Creative Lesson Planning, Positive Reinforcement Techniques, Parent-Teacher Communication',
+            introduction: '',
+            about: '',
+            projects: '',
+            achievements: '',
+            goals: '',
+            contact: '',
+            social: ''
+        };
+
+        // Initialize form with default values
+        Object.keys(inputs).forEach(key => {
+            inputs[key].value = defaultValues[key];
+        });
+
+        // Slider functionality
+        let currentSlide = 0;
+        const slideElements = previewContent.querySelectorAll('.portfolio-slide');
+        const totalSlides = slideElements.length;
+
+        // Create slide indicators
+        const createIndicators = () => {
+            slideIndicators.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('indicator');
+                indicator.setAttribute('role', 'tab');
+                indicator.setAttribute('aria-label', `Slide ${i + 1}`);
+                if (i === currentSlide) indicator.classList.add('active');
+                indicator.addEventListener('click', () => {
+                    currentSlide = i;
+                    updateSlider();
+                });
+                slideIndicators.appendChild(indicator);
+            }
+        };
+
+        const updateSlider = () => {
+            previewContent.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const indicators = slideIndicators.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+                indicator.setAttribute('aria-selected', index === currentSlide);
+            });
+            prevSlideBtn.disabled = currentSlide === 0;
+            nextSlideBtn.disabled = currentSlide === totalSlides - 1;
+        };
+
+        prevSlideBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        });
+
+        nextSlideBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlider();
+            }
+        });
+
+        // Initialize slider
+        createIndicators();
+        updateSlider();
+
+        // Function to update slide backgrounds based on template
+        const updateSlideBackgrounds = () => {
+            portfolioPreview.classList.remove('template-student', 'template-chef', 'template-professor', 'template-writer');
+            portfolioPreview.classList.add(`template-${selectedTemplate}`);
+        };
+
+        const updatePreview = () => {
+            const values = {
+                template: selectedTemplate,
+                name: inputs.name.value || defaultValues.name,
+                title: inputs.title.value || defaultValues.title,
+                phone: inputs.phone.value || defaultValues.phone,
+                email: inputs.email.value || defaultValues.email,
+                address: inputs.address.value || defaultValues.address,
+                profile: inputs.profile.value || defaultValues.profile,
+                education: inputs.education.value || defaultValues.education,
+                experience: inputs.experience.value || defaultValues.experience,
+                skills: inputs.skills.value.split(',').map(item => item.trim()).filter(item => item) || defaultValues.skills.split(',').map(item => item.trim()),
+                introduction: inputs.introduction.value || defaultValues.introduction,
+                about: inputs.about.value || defaultValues.about,
+                projects: inputs.projects.value || defaultValues.projects,
+                achievements: inputs.achievements.value || defaultValues.achievements,
+                goals: inputs.goals.value || defaultValues.goals,
+                contact: inputs.contact.value || defaultValues.contact,
+                social: inputs.social.value || defaultValues.social
+            };
+
+            // Static Container: Main Details
+            previews.name.textContent = values.name;
+            previews.title.textContent = values.title;
+            previews.phone.textContent = values.phone;
+            previews.email.innerHTML = `<a href="mailto:${values.email}">${values.email}</a>`;
+            previews.address.textContent = values.address;
+            previews.profile.textContent = values.profile;
+
+            // Education for Static Container and Slide 3
+            const educationLines = values.education.split('\n').filter(line => line.trim());
+            previews.education.innerHTML = educationLines.map(line => `<p>${line}</p>`).join('');
+            previews.educationPage.innerHTML = educationLines.map(line => `<p>${line}</p>`).join('');
+
+            // Skills for Static Container and Slide 4
+            previews.skills.innerHTML = values.skills.map(item => `<li>${item}</li>`).join('');
+            previews.skillsPage.innerHTML = values.skills.map(item => `<li>${item}</li>`).join('');
+
+            // Experience for Static Container and Slide 7
+            const experienceItems = values.experience.split(/(?=(?:PRESCHOOL TEACHER|ASSISTANT PRESCHOOL TEACHER))/).filter(item => item.trim());
+            const experienceHTML = experienceItems.map(item => {
+                const lines = item.split('\n').filter(line => line.trim());
+                return `<div class="experience-item">${lines.map(line => `<p>${line}</p>`).join('')}</div>`;
+            }).join('');
+            previews.experience.innerHTML = experienceHTML;
+            previews.experiencePage.innerHTML = experienceHTML;
+
+            // Slide 1: Introduction
+            previews.introduction.innerHTML = values.introduction.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Slide 2: About Me
+            previews.about.innerHTML = values.about.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Slide 5: Projects
+            previews.projects.innerHTML = values.projects.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Slide 6: Achievements/Certifications
+            previews.achievements.innerHTML = values.achievements.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Slide 8: Goals
+            previews.goals.innerHTML = values.goals.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Slide 9: Contact
+            previews.contact.innerHTML = values.contact.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Slide 10: Social
+            previews.social.innerHTML = values.social.split('\n').map(line => `<p>${line}</p>`).join('');
+
+            // Update slide backgrounds based on template
+            updateSlideBackgrounds();
+
+            return values;
+        };
+
+        // Update preview on form input
+        portfolioForm.addEventListener('input', updatePreview);
+
+        // Initial preview update
+        updatePreview();
+
+        // Save portfolio
+        savePortfolioBtn.addEventListener('click', () => {
+            const portfolioData = { template: selectedTemplate };
+            Object.keys(inputs).forEach(key => {
+                portfolioData[key] = inputs[key].value;
+            });
+            localStorage.setItem('portfolio', JSON.stringify(portfolioData));
+            alert('Portfolio saved successfully!');
+        });
+
+        // Load saved portfolio
+        const savedPortfolio = localStorage.getItem('portfolio');
+        if (savedPortfolio) {
+            const portfolioData = JSON.parse(savedPortfolio);
+            Object.keys(inputs).forEach(key => {
+                inputs[key].value = portfolioData[key] || defaultValues[key];
+            });
+            updatePreview();
+        }
+
+        // Download portfolio as PDF using jsPDF
+        downloadPortfolioBtn.addEventListener('click', () => {
+            const values = updatePreview();
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'pt',
+                format: 'letter'
+            });
+
+            let yPosition = 40;
+            const margin = 40;
+            const pageHeight = doc.internal.pageSize.height;
+            const lineHeight = 20;
+            const maxWidth = 500;
+
+            const checkPageBreak = (requiredHeight) => {
+                if (yPosition + requiredHeight > pageHeight - margin) {
+                    doc.addPage();
+                    yPosition = margin;
+                }
+            };
+
+            const addSection = (title, content) => {
+                if (!content || (Array.isArray(content) && content.length === 0)) return;
+
+                checkPageBreak(lineHeight * 2);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text(title.toUpperCase(), margin, yPosition);
+                yPosition += lineHeight;
+                doc.setLineWidth( Patrice);
+                doc.line(margin, yPosition, margin + 100, yPosition);
+                yPosition += 10;
+
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(12);
+
+                if (Array.isArray(content)) {
+                    content.forEach(item => {
+                        if (typeof item === 'string') {
+                            const lines = doc.splitTextToSize(item, maxWidth);
+                            checkPageBreak(lines.length * lineHeight);
+                            doc.text(lines, margin, yPosition);
+                            yPosition += lines.length * lineHeight;
+                        } else if (typeof item === 'object') {
+                            Object.values(item).forEach(line => {
+                                const subLines = doc.splitTextToSize(line, maxWidth);
+                                checkPageBreak(subLines.length * lineHeight);
+                                doc.text(subLines, margin, yPosition);
+                                yPosition += subLines.length * lineHeight;
+                            });
+                        }
+                    });
+                } else {
+                    const lines = doc.splitTextToSize(content, maxWidth);
+                    checkPageBreak(lines.length * lineHeight);
+                    doc.text(lines, margin, yPosition);
+                    yPosition += lines.length * lineHeight;
+                }
+
+                yPosition += 10;
+            };
+
+            addSection('Portfolio', [values.name, values.title]);
+            addSection('Contact', [
+                `Phone: ${values.phone}`,
+                `Email: ${values.email}`,
+                `Address: ${values.address}`
+            ]);
+            addSection('Profile', values.profile);
+            addSection('Education', values.education.split('\n').filter(line => line.trim()));
+            addSection('Skills', values.skills.map(skill => `- ${skill}`));
+            const experienceItems = values.experience.split(/(?=(?:PRESCHOOL TEACHER|ASSISTANT PRESCHOOL TEACHER))/).filter(item => item.trim());
+            const formattedExperience = experienceItems.map(item => {
+                const lines = item.split('\n').filter(line => line.trim());
+                return lines;
+            });
+            addSection('Internships/Experience', formattedExperience);
+            if (values.introduction) {
+                addSection('Introduction', values.introduction.split('\n').filter(line => line.trim()));
+            }
+            if (values.about) {
+                addSection('About Me', values.about.split('\n').filter(line => line.trim()));
+            }
+            if (values.projects) {
+                addSection('Projects', values.projects.split('\n').filter(line => line.trim()));
+            }
+            if (values.achievements) {
+                addSection('Achievements/Certifications', values.achievements.split('\n').filter(line => line.trim()));
+            }
+            if (values.goals) {
+                addSection('Goals', values.goals.split('\n').filter(line => line.trim()));
+            }
+            if (values.contact) {
+                addSection('Contact', values.contact.split('\n').filter(line => line.trim()));
+            }
+            if (values.social) {
+                addSection('Social', values.social.split('\n').filter(line => line.trim()));
+            }
+
+            doc.save('portfolio.pdf');
+        });
+
+        // Clear form
+        clearFormBtn.addEventListener('click', () => {
+            portfolioForm.reset();
+            Object.keys(inputs).forEach(key => {
+                inputs[key].value = defaultValues[key];
+            });
+            localStorage.removeItem('portfolio');
+            updatePreview();
+        });
+    });
+    </script>
+</body>
+</html>

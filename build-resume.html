@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Dynamic Portfolio Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="build-resume-page">
+    <div class="container">
+        <header>
+            <nav>
+                <a href="index.html" class="logo">Dynamic Portfolio</a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="build-portfolio.html">Build Portfolio</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content build-portfolio-section">
+            <h1>Build Your Resume</h1>
+            <div class="portfolio-builder">
+                <div class="portfolio-form">
+                    <h2>Enter Your Details</h2>
+                    <form id="resumeForm">
+                        <div class="input-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g., Olivia Wilson" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="title">Job Title</label>
+                            <input type="text" id="title" placeholder="e.g., Graphics Designer" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" placeholder="e.g., +123-456-7890" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="e.g., hello@reallygreatsite.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="website">Website (optional)</label>
+                            <input type="text" id="website" placeholder="e.g., www.reallygreatsite.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="profilePic">Profile Picture (optional)</label>
+                            <input type="file" id="profilePic" accept="image/*">
+                        </div>
+                        <div class="input-group">
+                            <label for="profile">Profile</label>
+                            <textarea id="profile" placeholder="e.g., Lorem ipsum dolor sit amet..." required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="education">Education</label>
+                            <textarea id="education" placeholder="e.g., Bachelor of Design, Wardere University, 2006-2008" required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="experience">Work Experience</label>
+                            <textarea id="experience" placeholder="e.g., Ginyard International Co., 2020-2023" required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="expertise">Expertise (comma-separated)</label>
+                            <input type="text" id="expertise" placeholder="e.g., Time Management, Leadership Qualities" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="languages">Languages (comma-separated)</label>
+                            <input type="text" id="languages" placeholder="e.g., English, Spanish, Telugu" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="references">References</label>
+                            <textarea id="references" placeholder="e.g., Bailey Dupont, Wardere Inc., CEO" required></textarea>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="get-started-btn" id="saveResume">Save Resume</button>
+                            <button type="button" class="get-started-btn" id="downloadResume">Download as PDF</button>
+                            <button type="button" class="get-started-btn" id="clearForm">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="portfolio-preview" id="resumePreview">
+                    <h2>Live Preview</h2>
+                    <div id="previewContent">
+                        <div class="resume-container">
+                            <div class="left-column">
+                                <div class="profile-picture">
+                                    <img id="previewImg" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Profile Picture">
+                                </div>
+                                <h1 id="previewName">OLIVIA WILSON</h1>
+                                <h2 id="previewTitle">Graphics Designer</h2>
+                                <div class="contact-info">
+                                    <p><span class="icon">📞</span> <span id="previewPhone">+123-456-7890</span></p>
+                                    <p><span class="icon">✉</span> <span id="previewEmail">hello@reallygreatsite.com</span></p>
+                                    <p><span class="icon">🌐</span> <span id="previewWebsite">www.reallygreatsite.com</span></p>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="education">
+                                    <h3>EDUCATION</h3>
+                                    <div id="previewEducation">
+                                        <p>Bachelor of Design<br>Wardere University<br>2006 - 2008</p>
+                                    </div>
+                                </div>
+                                <div class="expertise">
+                                    <h3>EXPERTISE</h3>
+                                    <ul id="previewExpertise">
+                                        <li>Time Management</li>
+                                        <li>Leadership Qualities</li>
+                                    </ul>
+                                </div>
+                                <div class="languages">
+                                    <h3>LANGUAGE</h3>
+                                    <div id="previewLanguages">
+                                        <p>English</p>
+                                        <p>Spanish</p>
+                                        <p>Telugu</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-column">
+                                <div class="profile">
+                                    <h3>PROFILE</h3>
+                                    <p id="previewProfile">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                                <div class="experience">
+                                    <h3>WORK EXPERIENCE</h3>
+                                    <div id="previewExperience">
+                                        <p><strong>Ginyard International Co.</strong></p>
+                                        <p>2020 - 2023</p>
+                                        <p>Product Design Manager</p>
+                                        <p>Working with the wider development team.</p>
+                                        <p>Manage website design, content, and SEO Marketing</p>
+                                        <p>Branding and Logo Design</p>
+                                        <p><strong>Arrowwell Industries</strong></p>
+                                        <p>2019 - 2020</p>
+                                        <p>Product Design Manager</p>
+                                        <p>Working with the wider development team.</p>
+                                        <p>Manage website design, content, and SEO Marketing</p>
+                                        <p>Branding and Logo Design</p>
+                                        <p><strong>Ginyard International Co.</strong></p>
+                                        <p>2017 - 2019</p>
+                                        <p>Product Design Manager</p>
+                                        <p>Working with the wider development team.</p>
+                                        <p>Manage website design, content, and SEO Marketing</p>
+                                        <p>Branding and Logo Design</p>
+                                    </div>
+                                </div>
+                                <div class="references">
+                                    <h3>REFERENCES</h3>
+                                    <div id="previewReferences">
+                                        <p>Bailey Dupont</p>
+                                        <p>Wardere Inc. / CEO</p>
+                                        <p>Phone: +123-456-7890</p>
+                                        <p>Email: hello@reallygreatsite.com</p>
+                                        <p>Harumi Kobayashi</p>
+                                        <p>Wardere Inc. / CEO</p>
+                                        <p>Phone: +123-456-7890</p>
+                                        <p>Email: hello@reallygreatsite.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resumeForm = document.getElementById('resumeForm');
+            const previewContent = document.getElementById('previewContent');
+            const saveResumeBtn = document.getElementById('saveResume');
+            const downloadResumeBtn = document.getElementById('downloadResume');
+            const clearFormBtn = document.getElementById('clearForm');
+            const profilePicInput = document.getElementById('profilePic');
+
+            // Get form elements
+            const inputs = {
+                name: document.getElementById('name'),
+                title: document.getElementById('title'),
+                phone: document.getElementById('phone'),
+                email: document.getElementById('email'),
+                website: document.getElementById('website'),
+                profile: document.getElementById('profile'),
+                education: document.getElementById('education'),
+                experience: document.getElementById('experience'),
+                expertise: document.getElementById('expertise'),
+                languages: document.getElementById('languages'),
+                references: document.getElementById('references')
+            };
+
+            // Get preview elements
+            const previews = {
+                name: document.getElementById('previewName'),
+                title: document.getElementById('previewTitle'),
+                phone: document.getElementById('previewPhone'),
+                email: document.getElementById('previewEmail'),
+                website: document.getElementById('previewWebsite'),
+                img: document.getElementById('previewImg'),
+                profile: document.getElementById('previewProfile'),
+                education: document.getElementById('previewEducation'),
+                experience: document.getElementById('previewExperience'),
+                expertise: document.getElementById('previewExpertise'),
+                languages: document.getElementById('previewLanguages'),
+                references: document.getElementById('previewReferences')
+            };
+
+            const defaultProfilePic = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80';
+            const defaultValues = {
+                name: 'OLIVIA WILSON',
+                title: 'Graphics Designer',
+                phone: '+123-456-7890',
+                email: 'hello@reallygreatsite.com',
+                website: 'www.reallygreatsite.com',
+                profile: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                education: 'Bachelor of Design\nWardere University\n2006 - 2008',
+                experience: 'Ginyard International Co.\n2020 - 2023\nProduct Design Manager\nWorking with the wider development team.\nManage website design, content, and SEO Marketing\nBranding and Logo Design',
+                expertise: 'Time Management, Leadership Qualities',
+                languages: 'English, Spanish, Telugu',
+                references: 'Bailey Dupont\nWardere Inc. / CEO\nPhone: +123-456-7890\nEmail: hello@reallygreatsite.com'
+            };
+
+            // Initialize form with default values
+            Object.keys(inputs).forEach(key => {
+                inputs[key].value = defaultValues[key];
+            });
+            previews.img.src = defaultProfilePic;
+
+            const updatePreview = () => {
+                const values = {
+                    name: inputs.name.value || defaultValues.name,
+                    title: inputs.title.value || defaultValues.title,
+                    phone: inputs.phone.value || defaultValues.phone,
+                    email: inputs.email.value || defaultValues.email,
+                    website: inputs.website.value || defaultValues.website,
+                    profile: inputs.profile.value || defaultValues.profile,
+                    education: inputs.education.value || defaultValues.education,
+                    experience: inputs.experience.value || defaultValues.experience,
+                    expertise: inputs.expertise.value.split(',').map(item => item.trim()).filter(item => item) || defaultValues.expertise.split(',').map(item => item.trim()),
+                    languages: inputs.languages.value.split(',').map(item => item.trim()).filter(item => item) || defaultValues.languages.split(',').map(item => item.trim()),
+                    references: inputs.references.value || defaultValues.references
+                };
+
+                // Debug log to verify name update
+                console.log('Updating preview with name:', values.name);
+
+                previews.name.innerText = values.name;
+                previews.title.innerText = values.title;
+                previews.phone.innerText = values.phone;
+                previews.email.innerText = values.email;
+                previews.website.innerText = values.website;
+                previews.profile.innerText = values.profile;
+                previews.education.innerHTML = values.education.replace(/\n/g, '<br>');
+                previews.experience.innerHTML = values.experience.replace(/\n/g, '<br>');
+                previews.expertise.innerHTML = values.expertise.map(item => `<li>${item}</li>`).join('');
+                previews.languages.innerHTML = values.languages.map(item => `<p>${item}</p>`).join('');
+                previews.references.innerHTML = values.references.replace(/\n/g, '<br>');
+            };
+
+            // Handle profile picture upload
+            profilePicInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        previews.img.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Event listeners
+            resumeForm.addEventListener('input', updatePreview);
+
+            saveResumeBtn.addEventListener('click', () => {
+                const resumeData = Object.keys(inputs).reduce((data, key) => {
+                    data[key] = inputs[key].value;
+                    return data;
+                }, {});
+                localStorage.setItem('resume', JSON.stringify(resumeData));
+                alert('Resume saved successfully!');
+            });
+
+            downloadResumeBtn.addEventListener('click', () => {
+                const requiredFields = ['name', 'title', 'phone', 'email', 'profile', 'education', 'experience', 'expertise', 'languages', 'references'];
+                const isComplete = requiredFields.every(key => inputs[key].value.trim());
+                if (!isComplete) {
+                    alert('Please fill out all required fields before downloading.');
+                    return;
+                }
+
+                const element = document.getElementById('previewContent');
+                const opt = {
+                    margin: 0.5,
+                    filename: 'resume.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            });
+
+            clearFormBtn.addEventListener('click', () => {
+                resumeForm.reset();
+                Object.keys(inputs).forEach(key => {
+                    inputs[key].value = defaultValues[key];
+                });
+                previews.img.src = defaultProfilePic;
+                updatePreview();
+            });
+
+            // Initial update
+            updatePreview();
+        });
+    </script>
+</body>
+</html>
