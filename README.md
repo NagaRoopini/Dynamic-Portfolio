@@ -1,4 +1,4 @@
-# AutoResume
+# Folio2Resume
 
 Designed and developed a dynamic full-stack web application that enables users to:
 
