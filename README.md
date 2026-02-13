@@ -1,4 +1,4 @@
-# AutoResume – Intelligent Portfolio & Resume Builder
+# AutoResume
 
 Designed and developed a dynamic full-stack web application that enables users to:
 
