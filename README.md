@@ -15,5 +15,4 @@ Designed and developed a dynamic full-stack web application that enables users t
 - Download resumes in PDF format
 
 Implemented automated data extraction from portfolio to resume, reducing redundant manual input and improving user experience.
-
-Tech Stack: Java (Spring Boot), HTML, CSS, JavaScript, MySQLith Java.
+**Tech Stack:** Java (Spring Boot), HTML, CSS, JavaScript, MySQLith Java.
